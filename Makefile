@@ -11,15 +11,15 @@ all: html index
 html: $(HTML_FILES)
 
 %.html: %.Rmd
-  R --slave -e "set.seed(100);rmarkdown::render('$<', encoding = 'UTF-8')"
+	R --slave -e "set.seed(100);rmarkdown::render('$<', encoding = 'UTF-8')"
 
 %.html: %.md
-  R --slave -e "set.seed(100);rmarkdown::render('$<', encoding = 'UTF-8')"
+	R --slave -e "set.seed(100);rmarkdown::render('$<', encoding = 'UTF-8')"
 
 .PHONY: clean index
 clean:
-  $(RM) $(HTML_FILES) index.html
-  $(RM) -r $(CACHE_DIRS) $(FIGURE_DIR)
+	$(RM) $(HTML_FILES) index.html
+	$(RM) -r $(CACHE_DIRS) $(FIGURE_DIR)
 
 index:
-  Rscript generateIndex.R
+	Rscript generateIndex.R
